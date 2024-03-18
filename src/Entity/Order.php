@@ -202,7 +202,7 @@ class Order
         $this->deletedAt = $deletedAt;
 
         return $this;
-    }q$^$sz*s!dffù^;,,
+    }
 
     public function getDeliveryLocations(): ?string
     {
