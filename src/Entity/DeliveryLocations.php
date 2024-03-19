@@ -2,12 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\OrderRepository;
+use App\Repository\DeliveryLocationsRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: OrderRepository::class)]
-#[ORM\Table(name: '`order`')]
-class Order
+#[ORM\Entity(repositoryClass: DeliveryLocationsRepository::class)]
+class DeliveryLocations
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -15,22 +14,22 @@ class Order
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $name = null;
+    private ?string $lastName = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $lastname = null;
+    private ?string $firstName = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $adress = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $adressSup = null;
+    private ?string $addressSupp = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $city = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $postalCode = null;
+    private ?int $cp = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $country = null;
@@ -47,39 +46,40 @@ class Order
     #[ORM\Column]
     private ?\DateTimeImmutable $updateAt = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $deletedAt = null;
-
-    
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $deleteAt = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $deliveryLocations = null;
+    private ?string $product = null;
+
+    #[ORM\ManyToOne(inversedBy: 'deliveryLocations')]
+    private ?Commande $commande = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getLastName(): ?string
     {
-        return $this->name;
+        return $this->lastName;
     }
 
-    public function setName(?string $name): static
+    public function setLastName(?string $lastName): static
     {
-        $this->name = $name;
+        $this->lastName = $lastName;
 
         return $this;
     }
 
-    public function getLastname(): ?string
+    public function getFirstName(): ?string
     {
-        return $this->lastname;
+        return $this->firstName;
     }
 
-    public function setLastname(?string $lastname): static
+    public function setFirstName(?string $firstName): static
     {
-        $this->lastname = $lastname;
+        $this->firstName = $firstName;
 
         return $this;
     }
@@ -96,14 +96,14 @@ class Order
         return $this;
     }
 
-    public function getAdressSup(): ?string
+    public function getAddressSupp(): ?string
     {
-        return $this->adressSup;
+        return $this->addressSupp;
     }
 
-    public function setAdressSup(?string $adressSup): static
+    public function setAddressSupp(?string $addressSupp): static
     {
-        $this->adressSup = $adressSup;
+        $this->addressSupp = $addressSupp;
 
         return $this;
     }
@@ -120,14 +120,14 @@ class Order
         return $this;
     }
 
-    public function getPostalCode(): ?int
+    public function getCp(): ?int
     {
-        return $this->postalCode;
+        return $this->cp;
     }
 
-    public function setPostalCode(?int $postalCode): static
+    public function setCp(?int $cp): static
     {
-        $this->postalCode = $postalCode;
+        $this->cp = $cp;
 
         return $this;
     }
@@ -192,26 +192,38 @@ class Order
         return $this;
     }
 
-    public function getDeletedAt(): ?\DateTimeImmutable
+    public function getDeleteAt(): ?\DateTimeImmutable
     {
-        return $this->deletedAt;
+        return $this->deleteAt;
     }
 
-    public function setDeletedAt(\DateTimeImmutable $deletedAt): static
+    public function setDeleteAt(?\DateTimeImmutable $deleteAt): static
     {
-        $this->deletedAt = $deletedAt;
+        $this->deleteAt = $deleteAt;
 
         return $this;
     }
 
-    public function getDeliveryLocations(): ?string
+    public function getProduct(): ?string
     {
-        return $this->deliveryLocations;
+        return $this->product;
     }
 
-    public function setDeliveryLocations(?string $deliveryLocations): static
+    public function setProduct(?string $product): static
     {
-        $this->deliveryLocations = $deliveryLocations;
+        $this->product = $product;
+
+        return $this;
+    }
+
+    public function getCommande(): ?Commande
+    {
+        return $this->commande;
+    }
+
+    public function setCommande(?Commande $commande): static
+    {
+        $this->commande = $commande;
 
         return $this;
     }
