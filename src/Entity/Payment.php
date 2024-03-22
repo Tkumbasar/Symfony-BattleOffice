@@ -27,8 +27,10 @@ class Payment
     #[ORM\OneToMany(targetEntity: PaymentMethod::class, mappedBy: 'payment')]
     private Collection $paymentMethod;
 
-    #[ORM\ManyToOne(inversedBy: 'payments')]
+    #[ORM\OneToOne(mappedBy: 'payment', cascade: ['persist', 'remove'])]
     private ?Commande $commande = null;
+
+   
 
     public function __construct()
     {
@@ -113,8 +115,20 @@ class Payment
 
     public function setCommande(?Commande $commande): static
     {
+        // unset the owning side of the relation if necessary
+        if ($commande === null && $this->commande !== null) {
+            $this->commande->setPayment(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($commande !== null && $commande->getPayment() !== $this) {
+            $commande->setPayment($this);
+        }
+
         $this->commande = $commande;
 
         return $this;
     }
+
+    
 }

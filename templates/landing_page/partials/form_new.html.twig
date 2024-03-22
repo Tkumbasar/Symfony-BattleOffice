@@ -11,7 +11,7 @@
 
 {# Etape 2 #}
 
-{{ form_start(form) }}
+
 
 <div class="card step_2">
     <div class="card-content">
@@ -19,50 +19,64 @@
         <p class="h6 center-align">Remplissez ce formulaire</p>
         <div class="form-wrapper">
             <div class="input-field">
-                <input type="text">
-                <label>Prénom</label>
+            {{ form_widget(form.lastName) }}
+            {{ form_label(form.lastName) }}
+                {# <input type="text">
+                <label>Prénom</label> #}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
-                <input type="text">
-                <label>Nom</label>
+            {{ form_widget(form.firstName) }}
+            {{ form_label(form.firstName) }}
+                {# <input type="text">
+                <label>Nom</label> #}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
-                <input type="text">
-                <label>Adresse</label>
+            {{ form_widget(form.adress) }}
+            {{ form_label(form.adress) }}
+                {# <input type="text">
+                <label>Adresse</label> #}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
-                <input type="text">
-                <label>Complément adr.</label>
+            {{ form_widget(form.adressSup) }}
+            {{ form_label(form.adressSup) }}
+                {# <input type="text">
+                <label>Complément adr.</label> #}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
-                <input type="text">
-                <label>Ville</label>
+            {{ form_widget(form.city) }}
+            {{ form_label(form.city) }}
+                {# <input type="text">
+                <label>Ville</label> #}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
-                <input type="text">
-                <label>Code postal</label>
+            {{ form_widget(form.cp) }}
+            {{ form_label(form.cp) }}
+                {# <input type="text">
+                <label>Code postal</label> #}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
-                <select>
-                    <option>France</option>
-                </select>
-                <label>Pays</label>
+                {{ form_widget(form.country) }}
+                {{ form_label(form.country) }}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
-                <input type="text">
-                <label>Téléphone</label>
+                {{ form_widget(form.phone) }}
+                {{ form_label(form.phone) }}
+                {# <input type="text">
+                <label>Téléphone</label> #}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
-                <input type="text">
-                <label>Email</label>
+                 {{ form_widget(form.email) }}
+                {{ form_label(form.email) }}
+                {# <input type="text">
+                <label>Email</label> #}
                 <div class="form-error"></div>
             </div>
             <div class="input-field">
@@ -72,51 +86,68 @@
             </div>
         </div>
     </div>
-{{ form_end(form) }}   
-    <ul class="collapsible">
+ 
+
+    <ul class="collapsible"> 
         <li>
             <div class="collapsible-header"><i class="material-icons">markunread_mailbox</i>Adresse de livraison différente ?</div>
             <div class="collapsible-body">
                 <div class="input-field">
-                    <input type="text">
-                    <label>Prénom</label>
+                {{ form_widget(form.deliveryLocations.lastName) }}
+                {{ form_label(form.deliveryLocations.lastName) }}
+                    {# <input type="text">
+                    <label>Prénom</label> #}
                     <div class="form-error"></div>
                 </div>
                 <div class="input-field">
-                    <input type="text">
-                    <label>Nom</label>
+                {{ form_widget(form.deliveryLocations.firstName) }}
+                {{ form_label(form.deliveryLocations.firstName) }}
+                    {# <input type="text">
+                    <label>Nom</label> #}
                     <div class="form-error"></div>
                 </div>
                 <div class="input-field">
-                    <input type="text">
-                    <label>Adresse</label>
+                {{ form_widget(form.deliveryLocations.adress) }}
+                {{ form_label(form.deliveryLocations.adress) }}
+                    {# <input type="text">
+                    <label>Adresse</label> #}
                     <div class="form-error"></div>
                 </div>
                 <div class="input-field">
-                    <input type="text">
-                    <label>Complément adr.</label>
+                {{ form_widget(form.deliveryLocations.addressSupp) }}
+                {{ form_label(form.deliveryLocations.addressSupp) }}
+                    {# <input type="text">
+                    <label>Complément adr.</label> #}
                     <div class="form-error"></div>
                 </div>
                 <div class="input-field">
-                    <input type="text">
-                    <label>Ville</label>
+                {{ form_widget(form.deliveryLocations.city) }}
+                {{ form_label(form.deliveryLocations.city) }}
+                    {# <input type="text">
+                    <label>Ville</label> #}
                     <div class="form-error"></div>
                 </div>
                 <div class="input-field">
-                    <input type="text">
-                    <label>Code postal</label>
+                {{ form_widget(form.deliveryLocations.cp) }}
+                {{ form_label(form.deliveryLocations.cp) }}
+                    {# <input type="text">
+                    <label>Code postal</label> #}
                     <div class="form-error"></div>
                 </div>
                 <div class="input-field">
-                    <select>
+                {{ form_widget(form.deliveryLocations.country) }}
+                {{ form_label(form.deliveryLocations.country) }}
+                    {# <select>
                         <option>France</option>
                     </select>
-                    <label>Pays</label>
+                    <label>Pays</label> #}
                     <div class="form-error"></div>
                 </div>
                 <div class="input-field">
-                    <input type="text">
-                    <label>Téléphone</label>
+                {{ form_widget(form.deliveryLocations.phone) }}
+                {{ form_label(form.deliveryLocations.phone) }}
+                    {# <input type="text">
+                    <label>Téléphone</label> #}
                     <div class="form-error"></div>
                 </div>
             </div>
@@ -134,7 +165,7 @@
                 <div class="collapsible-body card-form">
                     <div class="row">
                         <div class="center-align">
-                            <button type="submit" name="order[payment_method]" value="lpmonetico" class="btn-large btn-block waves-effect waves-light">Continuer</button>
+                            <button type="submit" name="order[payment_method]" value="stripe" class="btn-large btn-block waves-effect waves-light">Continuer</button>
                             <p>J'accepte les <a href="https://feelwellshop.com/fr/conditions-generales-de-ventes" target="_blank">conditions générales de vente</a></p>
                             <img class="responsive-img monetico" src="assets/images/paiement-securise-stripe.jpeg" alt="Stripe protège vos achats">
                         </div>
